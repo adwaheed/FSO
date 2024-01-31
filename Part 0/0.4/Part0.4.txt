@@ -1,0 +1,37 @@
+participant User
+participant Browser
+participant Server
+
+
+User->Browser: User accessing the website
+note right of User 
+The User enter the URL in the browser
+https://studies.cs.helsinki.fi/exampleapp/notes
+end note
+Browser->Server: GET Request: https://studies.cs.helsinki.fi/exampleapp/notes
+Server->Browser: Fetching HTML Document
+note right of Browser 
+The browser begins parsing the HTML document.
+Retrieves linked resources, if any.
+end note
+User->Browser: User creating new note
+note right of User 
+The User write new note text in input field.
+Then click on the Save button.
+end note
+Browser->Server: Post Request: https://studies.cs.helsinki.fi/exampleapp/new_note
+Browser->Server: User creating new note
+note right of Browser 
+The browser initiates a POST request,transmitting 
+input data as a payload to the specified URL.
+end note
+Server-->Browser:The Server issues a 302 HTTP status code along with a URL redirect
+Browser-->Server: GET Request: Redirect Url
+Server->Browser: Fetch HTML Document
+note right of Browser
+The Browser displays the updated note
+end note
+note right of User 
+User:
+Wow its my note. Awesome!
+end note

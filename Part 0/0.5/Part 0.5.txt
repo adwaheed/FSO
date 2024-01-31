@@ -1,0 +1,35 @@
+participant User
+participant Browser
+participant Server
+
+User->Browser: User accessing the website
+note right of User 
+The User enter the URL in the browser
+https://studies.cs.helsinki.fi/exampleapp/spa
+end note
+Browser->Server: GET Request: https://studies.cs.helsinki.fi/exampleapp/spa
+Server->Browser: Fetching HTML Document
+note right of Browser 
+The browser begins parsing the HTML document.
+Retrieves linked resources. Like: CSS, JS & JSON files.
+end note
+
+Browser->Server: GET Request: To get main.css file
+Server-->Browser: Server Response: Returns the requested file main.css
+
+Browser->Server: GET Request: To get spa.js file
+Server-->Browser: Server Response: Returns the requested file spa.js
+Browser->Server: GET Request: To get data.json file
+Server-->Browser: Server Response: Returns the requested file data.json
+
+
+note right of Browser
+The Browser parse the files.
+CSS, JS & JSON.
+Display it on the browser.
+end note
+
+note left of Browser
+User now able to see the SPA
+Website of the browser.
+end note
